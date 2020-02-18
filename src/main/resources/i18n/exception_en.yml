@@ -1,0 +1,38 @@
+userNotFound:
+  code: "-1000"
+  msg: "This member not exist"
+emailSigninFailed:
+  code: "-1001"
+  msg: "Your account does not exist or your email or password is incorrect."
+existingUser:
+  code: "-1002"
+  msg: "You are an existing member."
+
+
+postsNotFound:
+  code: "-2000"
+  msg: "This posts not exist"
+
+
+entryPointException:
+  code: "-3000"
+  msg: "You do not have permission to access this resource."
+accessDenied:
+  code: "-3001"
+    msg: "A resource that can not be accessed with the privileges it has."
+notOwner:
+  code: "-3002"
+  msg: "You are not the owner of this resource."
+
+
+resourceNotExist:
+  code: "-4000"
+  msg: "This resource does not exist."
+communicationError:
+  code: "-4001"
+  msg: "An error occurred during communication."
+
+
+unKnown:
+  code: "-9999"
+  msg: "An unknown error has occurred."
