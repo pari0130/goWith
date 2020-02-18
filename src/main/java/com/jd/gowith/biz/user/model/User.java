@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class User extends BaseTimeEntity{
 	
     @Id // 해당 테이블의 PK 필드를 나타냅니다.
-    @Column(name="user_id", columnDefinition = "int4", nullable = false)
+    @Column(name="user_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)// PK의 생성 규칙을 나타냅니다. 기본값은 AUTO 로, MySQL의 auto_increment와 같이 자동증가하는 정수형 값이 됩니다.
     private Long userId;
 
