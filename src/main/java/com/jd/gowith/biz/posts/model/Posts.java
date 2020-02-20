@@ -19,7 +19,7 @@ import org.springframework.data.annotation.CreatedDate;
 @Getter // lombok getter 자동 생성
 @Setter
 @Entity // 테이블과 링크될 클래스임을 나타냅니다.
-@Table(name = "jpc_posts", schema = "public")
+@Table(name = "jd_posts", schema = "public")
 public class Posts extends BaseTimeEntity{
 	
     @Id // 해당 테이블의 PK 필드를 나타냅니다.

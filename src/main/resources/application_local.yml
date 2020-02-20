@@ -15,7 +15,7 @@ spring:
   h2: # local h2 db 사용시..
     console:
       enabled: true
-      path: /console # h2 콘솔 주소 - localhost:8080/console
+      path: /h2-console # h2 콘솔 주소 - localhost:8080/console
 logging:
   file: logs/application-debug.log
   pattern:
