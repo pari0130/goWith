@@ -47,8 +47,8 @@ public class ExceptionAdvice {
 
     @ExceptionHandler(AuthEmailSigninFailedException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    protected CommonResult emailSigninFailed(HttpServletRequest request, AuthEmailSigninFailedException e) {
-        return responseService.getFailResult(Integer.valueOf(getMessage("emailSigninFailed.code")), getMessage("emailSigninFailed.msg"));
+    protected CommonResult authEmailSigninFailed(HttpServletRequest request, AuthEmailSigninFailedException e) {
+        return responseService.getFailResult(Integer.valueOf(getMessage("authEmailSigninFailed.code")), getMessage("authEmailSigninFailed.msg"));
     }
 
     @ExceptionHandler(PostsNotFoundException.class)

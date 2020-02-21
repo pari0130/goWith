@@ -29,9 +29,10 @@ public class UserJPARepositoryImpl implements UserRepository {
 	}
 
 	@Override
-	public Optional<User> get(Long userId) {
-		return userJPARepository.findById(userId);
-	}
+	public Optional<User> getUserById(Long userPk) { return userJPARepository.findById(userPk); }
+
+	@Override
+	public Optional<User> getUserByUserId(String userId) { return userJPARepository.findByUserId(userId); }
 
 	@Override
 	public User update(User user) {

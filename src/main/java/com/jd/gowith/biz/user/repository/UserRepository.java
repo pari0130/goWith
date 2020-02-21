@@ -10,7 +10,8 @@ public interface UserRepository<T>{
 	List<User> list();
 	// CRUD
 	User create(User user);
-	Optional<User> get(Long userId);
+	Optional<User> getUserById(Long userPk);
+	Optional<User> getUserByUserId(String email);
 	User update(User user);
 	void delete(Long userId);
 	

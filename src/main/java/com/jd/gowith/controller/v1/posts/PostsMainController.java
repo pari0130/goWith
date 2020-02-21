@@ -16,7 +16,7 @@ import com.jd.gowith.biz.posts.service.PostsService;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Api(tags = {"1. posts"})
+@Api(tags = {"2. posts"})
 @RestController
 @RequestMapping("api/v1/posts")
 @Slf4j

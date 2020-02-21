@@ -3,14 +3,17 @@ package com.jd.gowith.biz.user.service.impl;
 import com.jd.gowith.biz.user.model.User;
 import com.jd.gowith.biz.user.repository.UserRepository;
 import com.jd.gowith.biz.user.service.UserService;
+import com.jd.gowith.common.exception.user.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
 	@Autowired
 	private UserRepository userRepository;
@@ -26,9 +29,14 @@ public class UserServiceImpl implements UserService {
     }
 	
 	@Override
-	public Optional<User> getUserById(Long userId) {
-        return userRepository.get(userId);
+	public Optional<User> getUserById(Long userPk) {
+        return userRepository.getUserById(userPk);
     }
+
+	@Override
+	public Optional<User> getUserByUserId(String userId) {
+		return userRepository.getUserByUserId(userId);
+	}
 	
 	@Override
 	public User updateUser(User user) {
@@ -39,7 +47,21 @@ public class UserServiceImpl implements UserService {
     public void deleteUserById(Long userId) {
 		userRepository.delete(userId);
     }
-	
+
+	public UserDetails loadUserByUsername(String userPk) {
+		Optional<UserDetails> userDetails = userRepository.getUserById(Long.valueOf(userPk));
+
+		/*Optional<UserDetails> userDetails = userRepository.getUserById(Long.valueOf(userPk)).map(user ->
+				User.builder()
+						.username(user.getUserId())
+						.password(user.getPassword())
+						.authorities(Arrays.asList(new SimpleGrantedAuthority("Test")))
+						.build()
+		);*/
+
+		return userDetails.orElseThrow(UserNotFoundException::new);
+	}
+
 //  @Transactional
 //  public Long save(PostsSaveRequestDto dto){
 //      return userRepository.save(dto.toEntity()).getId();

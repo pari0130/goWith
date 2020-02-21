@@ -23,7 +23,7 @@ import org.springframework.data.annotation.CreatedDate;
 public class Posts extends BaseTimeEntity{
 	
     @Id // 해당 테이블의 PK 필드를 나타냅니다.
-    @Column(name="posts_id", nullable = false)
+    @Column(name="posts_seq", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)// PK의 생성 규칙을 나타냅니다. 기본값은 AUTO 로, MySQL의 auto_increment와 같이 자동증가하는 정수형 값이 됩니다.
     private Long postsId;
 

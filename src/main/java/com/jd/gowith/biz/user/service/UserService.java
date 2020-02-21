@@ -11,7 +11,9 @@ public interface UserService {
 
 	User createUser(User user);
 
-	Optional<User> getUserById(Long userId);
+	Optional<User> getUserById(Long userPk);
+
+	Optional<User> getUserByUserId(String email);
 
 	User updateUser(User user);
 
