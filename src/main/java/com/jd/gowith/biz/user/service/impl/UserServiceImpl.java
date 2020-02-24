@@ -44,8 +44,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	}
 
 	@Override
-    public void deleteUserById(Long userId) {
-		userRepository.delete(userId);
+    public void deleteUserById(Long userPk) {
+		userRepository.delete(userPk);
     }
 
 	public UserDetails loadUserByUsername(String userPk) {

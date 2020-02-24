@@ -16,7 +16,7 @@ import com.jd.gowith.biz.posts.service.PostsService;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Api(tags = {"2. posts"})
+@Api(tags = {"4. posts"})
 @RestController
 @RequestMapping("api/v1/posts")
 @Slf4j
@@ -42,7 +42,7 @@ public class PostsMainController {
     @ApiOperation(value = "User 입력", notes = "게시글을 입력한다.")
     @PostMapping
     public SingleResult<Posts> create(
-            @ApiParam(value = "사용자아이디", required = true) @RequestParam long userId,
+            @ApiParam(value = "사용자아이디", required = true) @RequestParam String userId, // email
             @ApiParam(value = "게시글제목", required = true) @RequestParam String title,
             @ApiParam(value = "게시글내용", required = true) @RequestParam String contents) {
 

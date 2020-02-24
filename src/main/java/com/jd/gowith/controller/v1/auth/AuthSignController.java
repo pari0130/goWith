@@ -44,11 +44,11 @@ public class AuthSignController {
     @ApiOperation(value = "로그인", notes = "이메일 회원 로그인을 한다.")
     @PostMapping(value = "/signin")
     public SingleResult<String> signin(@ApiParam(value = "회원ID : 이메일", required = true) @RequestParam String userId,
-                                       @ApiParam(value = "비밀번호", required = true) @RequestParam String password) {
+                                       @ApiParam(value = "비밀번호", required = true) @RequestParam String userPassword) {
 
         User user = userService.getUserByUserId(userId).orElseThrow(AuthEmailSigninFailedException::new);
 
-        if (!passwordEncoder.matches(password, user.getPassword()))
+        if (!passwordEncoder.matches(userPassword, user.getPassword()))
             throw new AuthEmailSigninFailedException();
 
         return responseService.getSingleResult(jwtTokenProvider.createToken(String.valueOf(user.getUserPk()), user.getRoles()));
@@ -67,12 +67,12 @@ public class AuthSignController {
 
     @ApiOperation(value = "가입", notes = "회원가입을 한다.")
     @PostMapping(value = "/signup")
-    public CommonResult signup(@ApiParam(value = "회원ID : 이메일", required = true) @RequestParam String userId,
+    public CommonResult signup(@ApiParam(value = "회원ID : 이메일", required = true) @RequestParam String userId, // email
                                @ApiParam(value = "비밀번호", required = true) @RequestParam String userPassword,
                                @ApiParam(value = "이름", required = true) @RequestParam String userName) {
 
         userService.createUser(User.builder()
-                .userId(userId)
+                .userId(userId) // email
                 .userPassword(passwordEncoder.encode(userPassword))
                 .userName(userName)
                 .roles(Collections.singletonList("ROLE_USER"))

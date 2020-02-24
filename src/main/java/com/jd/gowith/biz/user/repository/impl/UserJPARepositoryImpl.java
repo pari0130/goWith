@@ -40,7 +40,7 @@ public class UserJPARepositoryImpl implements UserRepository {
 	}
 
 	@Override
-	public void delete(Long userId) {
-		userJPARepository.deleteById(userId);
+	public void delete(Long userPk) {
+		userJPARepository.deleteById(userPk);
 	}
 }

@@ -28,17 +28,14 @@ public class User extends BaseTimeEntity implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)// PK의 생성 규칙을 나타냅니다. 기본값은 AUTO 로, MySQL의 auto_increment와 같이 자동증가하는 정수형 값이 됩니다.
     private Long userPk;
 
-    @Column(name="user_id", columnDefinition = "varchar",  unique = true, length = 30, nullable = false)
+    @Column(name="user_id", columnDefinition = "varchar2",  unique = true, length = 100, nullable = false)
     private String userId;
 
-    @Column(name="user_password", columnDefinition = "varchar", length = 255, nullable = false)
+    @Column(name="user_password", columnDefinition = "varchar2", length = 255, nullable = false)
     private String userPassword;
 
-    @Column(name="user_name", columnDefinition = "varchar", length = 255, nullable = true)
+    @Column(name="user_name", columnDefinition = "varchar2", length = 255, nullable = true)
     private String userName;
-
-    @Column(name = "event_date", updatable = true)
-    private LocalDateTime eventDate;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
