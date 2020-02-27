@@ -6,6 +6,19 @@ spring:
     encoding: UTF-8
   jwt:
     secret: jd.gowith!@#amp;
+  oauth:
+    kakao:
+      client_id: f5c8c303b6f4a1dc3aaca10a6ea72471 # 앱생성시 받은 REST API 키
+      redirect: /oauth/kakao/redirect
+      url:
+        login: https://kauth.kakao.com/oauth/authorize
+        token: https://kauth.kakao.com/oauth/token
+        profile: https://kapi.kakao.com/v2/user/me
+  base:
+    url: http://localhost:8080
+  freemarker:
+    template-loader-path: classpath:/templates
+    suffix: .ftl
 
 logging:
   level:

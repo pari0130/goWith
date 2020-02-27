@@ -12,6 +12,7 @@ public interface UserRepository<T>{
 	User create(User user);
 	Optional<User> getUserById(Long userPk);
 	Optional<User> getUserByUserId(String userId);
+	Optional<User> getUserByUserIdAndUserOathPrvdr(String userId, String provider);
 	User update(User user);
 	void delete(Long userPk);
 	

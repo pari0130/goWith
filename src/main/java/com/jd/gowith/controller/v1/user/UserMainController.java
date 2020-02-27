@@ -15,18 +15,15 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-@Api(tags = {"2. User"})
+@Api(tags = {"03. User"})
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api/v1")
 @Slf4j
 public class UserMainController {
 
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private ResponseService responseService;
+    private final UserService userService;
+    private final ResponseService responseService;
 
     @ApiImplicitParams({
             @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 access_token", required = true, dataType = "String", paramType = "header")

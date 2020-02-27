@@ -15,6 +15,8 @@ public interface UserService {
 
 	Optional<User> getUserByUserId(String userId);
 
+	Optional<User> getUserByUserIdAndUserOathPrvdr(String userId, String provider);
+
 	User updateUser(User user);
 
 	void deleteUserById(Long userPk);

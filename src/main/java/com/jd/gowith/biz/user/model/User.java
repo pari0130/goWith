@@ -31,11 +31,14 @@ public class User extends BaseTimeEntity implements UserDetails {
     @Column(name="user_id", columnDefinition = "varchar2",  unique = true, length = 100, nullable = false)
     private String userId;
 
-    @Column(name="user_password", columnDefinition = "varchar2", length = 255, nullable = false)
+    @Column(name="user_password", columnDefinition = "varchar2", length = 255, nullable = true)
     private String userPassword;
 
     @Column(name="user_name", columnDefinition = "varchar2", length = 255, nullable = true)
     private String userName;
+
+    @Column(name="user_oath_prvdr", columnDefinition = "varchar2", length = 100, nullable = true)
+    private String userOathPrvdr;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default

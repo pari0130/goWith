@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                             "/*/*/auth/signin/**",
                             "/*/*/auth/signup",
                             "/*/*/auth/signup/**",
-                            "/*/*/social/**").permitAll() // 가입 및 인증 주소는 누구나 접근가능
+                            "/oauth/**").permitAll() // 가입 및 인증 주소는 누구나 접근가능
                     .antMatchers(
                             "/exception/**",
                             "/helloworld/**",

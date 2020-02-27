@@ -2,12 +2,14 @@ package com.jd.gowith.controller.exception;
 
 import com.jd.gowith.biz.response.model.CommonResult;
 import com.jd.gowith.common.exception.auth.AuthenticationEntryPointException;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Api(tags = {"99. Exception"})
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/exception")

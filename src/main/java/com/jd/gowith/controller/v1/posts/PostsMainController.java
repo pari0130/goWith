@@ -8,6 +8,7 @@ import com.jd.gowith.common.exception.posts.PostsNotFoundException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,17 +17,15 @@ import com.jd.gowith.biz.posts.service.PostsService;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Api(tags = {"4. posts"})
+@Api(tags = {"04. posts"})
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("api/v1/posts")
 @Slf4j
 public class PostsMainController {
 
-    @Autowired
-    private PostsService postsService;
-
-    @Autowired
-    private ResponseService responseService;
+    private final PostsService postsService;
+    private final ResponseService responseService;
 
     @GetMapping("/hello")
     public String hello() {

@@ -35,6 +35,9 @@ public class UserJPARepositoryImpl implements UserRepository {
 	public Optional<User> getUserByUserId(String userId) { return userJPARepository.findByUserId(userId); }
 
 	@Override
+	public Optional<User> getUserByUserIdAndUserOathPrvdr(String userId, String provider) { return userJPARepository.findByUserIdAndUserOathPrvdr(userId, provider); }
+
+	@Override
 	public User update(User user) {
 		return userJPARepository.save(user);
 	}

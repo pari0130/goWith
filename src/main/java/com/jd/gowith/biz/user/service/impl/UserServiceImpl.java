@@ -4,7 +4,7 @@ import com.jd.gowith.biz.user.model.User;
 import com.jd.gowith.biz.user.repository.UserRepository;
 import com.jd.gowith.biz.user.service.UserService;
 import com.jd.gowith.common.exception.user.UserNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
@@ -12,11 +12,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
 
-	@Autowired
-	private UserRepository userRepository;
+	private final UserRepository userRepository;
 	
 	@Override
 	public List<User> getUsers() {
@@ -36,6 +36,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	@Override
 	public Optional<User> getUserByUserId(String userId) {
 		return userRepository.getUserByUserId(userId);
+	}
+
+	public Optional<User> getUserByUserIdAndUserOathPrvdr(String userId, String provider) {
+		return userRepository.getUserByUserIdAndUserOathPrvdr(userId, provider);
 	}
 	
 	@Override

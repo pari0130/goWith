@@ -12,6 +12,9 @@ spring:
     database-platform: ${SPRING_JPA_DATABASE-PLATFORM}
     hibernate:
       ddl-auto: ${SPRING_JPA_HIBERNATE_DDL-AUTO} # Hibernate ddl auto (create, create-drop, validate, update)
+#  base:
+#    url: TODO
+
 logging:
   # file: logs/application-debug.log
   pattern:

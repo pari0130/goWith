@@ -3,21 +3,19 @@ package com.jd.gowith.biz.posts.service.impl;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jd.gowith.biz.posts.model.Posts;
 import com.jd.gowith.biz.posts.repository.PostsRepository;
 import com.jd.gowith.biz.posts.service.PostsService;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Service
 public class PostsServiceImpl implements PostsService{
 
-	@Autowired
-	private PostsRepository postsRepository;
+	private final PostsRepository postsRepository;
 	
 	@Override
 	public List<Posts> getPosts() {
