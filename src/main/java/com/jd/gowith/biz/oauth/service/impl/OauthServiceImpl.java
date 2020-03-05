@@ -1,8 +1,6 @@
 package com.jd.gowith.biz.oauth.service.impl;
 
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.jd.gowith.biz.oauth.model.KakaoProfile;
 import com.jd.gowith.biz.oauth.model.RetKakaoAuth;
 import com.jd.gowith.biz.oauth.service.OauthService;
@@ -12,12 +10,16 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.json.BasicJsonParser;
+import org.springframework.boot.json.JsonParser;
 import org.springframework.core.env.Environment;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Map;
 
 @RequiredArgsConstructor
 @Service
@@ -49,10 +51,14 @@ public class OauthServiceImpl implements OauthService {
         // Set http entity
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(null, headers);
 
+        JsonParser parser = new BasicJsonParser();
+        Map<String, Object> jsonMap = null;
+
         try {
             // Request profile
             ResponseEntity<String> response = restTemplate.postForEntity(env.getProperty("spring.oauth.kakao.url.profile"), request, String.class);
             if (response.getStatusCode() == HttpStatus.OK)
+                // jsonMap = parser.parseMap(new String(response.getBody().toString()));
                 return gson.fromJson(response.getBody(), KakaoProfile.class);
         } catch (Exception e) {
             // 소셜회원 로그인 시 유효하지 않은 accessToken 입력했을때 return exception
